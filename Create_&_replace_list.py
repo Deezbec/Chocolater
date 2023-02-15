@@ -166,4 +166,4 @@ os.remove(temp_file_path)
 os.remove(os.path.abspath(os.curdir) + "\\" + "html_formatted_list.txt")
 
 print("Completed!")
-# input()
+input()
