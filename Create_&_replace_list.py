@@ -80,12 +80,12 @@ def main_list_creator(list_path, temp_file_path):
     current_group = ""
     group_type = 0
     for i in f:
-        if len(i) > 4 and not (i == "Displayed name,Choco pack name,WinGet pack name,icon file format or <local.format>\n"): a.append(i[:-1])
+        if (len(i) > 6 and not (i[0:30] == "Displayed name,Choco pack name")) or i[0] == "#" or i[0] == "*" or i[0] == "%": a.append(i[:-1])
     for i in a:
         if i[0] == '*' or i[0] == '%':
             if form_check_opened == 1: final += "\n</div> \n\n"
             form_check_opened = 1
-            current_group = i[1:-3]
+            current_group = i[1:-4] #Если буду расширять список, поменять здесь
             final += "<div class=\"form-check\">\n"
             final += "<input class=\"form-check-input\" type=\"checkbox\" name=\"category\" id=\"{0}\" value=\"{0}\">\n"\
                 .format(current_group)
@@ -97,29 +97,31 @@ def main_list_creator(list_path, temp_file_path):
             splitted_list = i.split(",")
             if i[0] == "#":
                 f = open(temp_file_path, "a")
-                if i == "#\\\\\\":
-                    f.write("<!-- end_comment -->\n")
-                else:
-                    f.write("<br>" + i[1:] + "\n")
+                if i == "#\\\\\\": f.write("<!-- end_comment -->\n")
+                else:              f.write("<br>" + i[1:] + "\n")
                 continue
             package_img = icon_link_creator(splitted_list, temp_file_path)
             package_link_html_opened = "<a href=\"https://community.chocolatey.org/packages/{0}\" target=\"_blank\">".format(
                 splitted_list[1])
-            link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
+            choco_link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/choco_icon.png\" width=\"16\" height=\"16\">".format(github_repo_link)
             winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.webp\" width=\"16\" height=\"16\">".format(github_repo_link)
             winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(
                 splitted_list[2])
+            extra_link_html_opened = "<a href=\"{0}\" target=\"_blank\">".format(
+                splitted_list[4])
+            link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
             # winget_icon = ""
             if package_img[-40:-25] == "no_auto_img.lol": package_img = ""
+            if splitted_list[1] == "": choco_link_icon = ""
             if splitted_list[2] == "": winget_icon = ""
-            if splitted_list[1] == "": link_icon = ""
+            if splitted_list[4] == "": link_icon = ""
             final += (
                 "\n\n<input class=\"form-check-input\" type=\"checkbox\" name=\"app\" id=\",{1},{0},{2}\" value=\",{1},{0},{2}\">\n".format(
                     splitted_list[1], current_group, splitted_list[2]))
             if group_type == 1:
-                final += "<label class=\"form-check-label\" for=\",{3},{1},{2}\">{4} {0} {5}{6}</a>{7}{8}</a></label><br>".format(
+                final += "<label class=\"form-check-label\" for=\",{3},{1},{2}\">{4} {0} {5}{6}</a>{7}{8}</a>{9}{10}</a></label><br>".format(
                     splitted_list[0], splitted_list[1], splitted_list[2], current_group, package_img,
-                    package_link_html_opened, link_icon, winget_package_htmlopened, winget_icon)
+                    package_link_html_opened, choco_link_icon, winget_package_htmlopened, winget_icon, extra_link_html_opened, link_icon)
             if group_type == 2:
                 final += "<label class=\"form-check-label\" for=\",{3},{1},{2}\">{5}{4}</a></label>".format(
                     splitted_list[0], splitted_list[1], splitted_list[2], current_group, package_img,
