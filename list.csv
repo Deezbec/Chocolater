@@ -1,4 +1,4 @@
-Displayed name,Choco pack name,WinGet pack name,"icon file format // local.format"
+Displayed name,Choco pack name,WinGet pack name,icon file format or <local.format>
 *Browser,,,
 Brave,brave,BraveSoftware.BraveBrowser,svg
 Firefox,firefox,Mozilla.Firefox,svg
@@ -14,6 +14,7 @@ Aomeibackup,backupper-standard,AOMEI.Backupper,
 Everything,everything,voidtools.Everything,
 HwInfo,hwinfo,REALiX.HWiNFO,
 FDMtorrent,freedownloadmanager,SoftDeluxe.FreeDownloadManager,local.png
+Kaspersky Security Cloud,,Kaspersky.SecurityCloud,local.svg
 ,,,
 *Windows,,,
 Autoruns,autoruns,Microsoft.Sysinternals.Autoruns,
@@ -85,16 +86,16 @@ ProcessLasso,plasso,BitSum.ProcessLasso,
 LockHunter,lockhunter,CrystalRich.LockHunter,
 ThrottleStop,throttlestop,,local.png
 ,,,
-&Not in Choco,,,
+*Not in Choco,,,
 Caustic,,,
-Mozilla Thunder bird,,Mozilla.Thunderbird,
-Kaspersky Security Cloud,,Kaspersky.SecurityCloud,
+Mozilla Thunder bird,,Mozilla.Thunderbird,local.jpg
+Kaspersky Security Cloud,,Kaspersky.SecurityCloud,local.svg
 OutPlayed,,,
 Disk Drill,,,
 ISLC - standby list cleaner,,,
 ,,,
 ,,,
-&Tweakers not in choco,,,
+*Tweakers not in choco,,,
 win10 tweaker,,,
 privatezilla,,,
 Booster X,,,
@@ -112,12 +113,12 @@ VSCode,vscode,Microsoft.VisualStudioCode,
 ,,,
 #<h4> Not tested progs </h4>
 #
-#darktable gimp inkscape krita - фоторедакторы
-#kdenlive olive openshot - видередакторы
-#lmms - создание музыки
-#scribus sublime text  - верстка
+#darktable gimp inkscape krita - Photo edit
+#kdenlive olive openshot - Video edit
+#lmms - Music creation
+#scribus sublime text  - Docs(page-proofs)
 #only office - office
-#kodi - синхронизированный кинотеатр
+#kodi - sync cinema
 #
 # VPN - Aman vpn (Marty files); Privado
 #Android
