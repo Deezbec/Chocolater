@@ -52,8 +52,9 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 2) another way of adding icons  
 
 ### Known issues:  
-1) An extra "\<\!-- end\{\} --\> appears each time the list is edited  
-Its doesn't affect the way program works, just a bit annoying  
+
+
+
 
 ------------
 ### License
