@@ -30,6 +30,8 @@
             padding: 20px;
         }
         .chocoInst {color: red}
+        .invis {display: none;}
+        
     </style>
 </head>
 <body>
@@ -51,19 +53,19 @@
             <div class="col">
                 <div data-toggle="buttons">
                     <label class="btn btn-primary btn-info">
-                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM1" value="choco" checked="checked"> Chocolatey 
+                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM1" value="choco" onclick="updateBat()" checked="checked"> Chocolatey 
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM2" value="winget"> WinGet 
+                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM2" value="winget" onclick="updateBat()"> WinGet 
                     </label>
 
                     <br>
                     
                     <label class="btn btn-primary btn-lg">
-                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection1" value="install" checked="checked"> Install
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection1" value="install" onclick="updateBat()" checked="checked"> Install
                     </label>
                     <label class="btn btn-danger btn-lg">
-                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall"> Uninstall
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall" onclick="updateBat()"> Uninstall
                     </label>
                 </div>
             </div>       
@@ -390,13 +392,27 @@
                     <input type="button" id="saveButton" name="saveButton" class="btn btn-success btn-lg btn-block" value="Generate code" onclick="saveBat()" />
                 </div>
             </div>
+            
         </form>
+
+        <div class="row mt-5">
+            <div class="col">
+                <div data-toggle="buttons">
+                    <label class="btn btn-primary btn-info" id="UserSelectionPM1_checker" style="display: inline-block;">Chocolatey</label>
+                    <label class="btn btn-secondary" id="UserSelectionPM2_checker" style="display: none;"> WinGet </label>
+
+                    <label class="btn btn-primary" id="UserSelection1_checker" style="display: inline-block;">Install </label>
+                     <label class="btn btn-danger" id="UserSelection2_checker" style="display: none;"> Uninstall</label>
+                </div>
+            </div>       
+        </div>
 
         <div class="row mt-5">
             <div class="col">
                 <h2>Usage:</h2>
                 <ul class="list-group">
                 
+                    <li class="list-group-item">0. Check your selection above    <a href="#">click to get up<a></li>
                     <li class="list-group-item">1. Run PowerShell as Administrator</li>
                     <li class="list-group-item">2. Install choco by running <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('chocoInst')">Copy code to Clipboard</button></li>
                     <li class="list-group-item bg-light"><code id="chocoInst">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</code></li>
@@ -435,6 +451,30 @@
     </div>
 </body>
 <script>
+    function updateBat(){
+        var radios = document.getElementsByName('UserSelection');
+        var radiosPM = document.getElementsByName('UserSelectionPM');
+        for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked) {
+            user_selection = radios[i].value;
+            if(user_selection == "install") 
+            {document.getElementById("UserSelection1_checker").style.display="inline-block"
+            document.getElementById("UserSelection2_checker").style.display="none"}
+            else {document.getElementById("UserSelection2_checker").style.display="inline-block"
+            document.getElementById("UserSelection1_checker").style.display="none"}
+            //break;
+          }
+          if(radiosPM[i].checked) {
+            user_selectionPM = radiosPM[i].value;
+            if(user_selectionPM == "choco") {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
+            document.getElementById("UserSelectionPM2_checker").style.display="none"}
+            else {document.getElementById("UserSelectionPM2_checker").style.display="inline-block"
+            document.getElementById("UserSelectionPM1_checker").style.display="none"}
+            //break;
+          }
+        }
+    }
+
     function saveBat() {
         var radios = document.getElementsByName('UserSelection');
         var radiosPM = document.getElementsByName('UserSelectionPM');
@@ -468,7 +508,14 @@
             }
         }        
         if (user_selectionPM == "choco") {var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list + '-y ';}
-        else { var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list; }
+        else { 
+            var windows_line = "";
+            app_list = app_list.split(" ")
+            for (i = 0; i < app_list.length - 1; i++) {
+            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; }
+            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}
+            }
+        }
 
         if (app_list) {
             document.getElementById('windows').innerHTML = windows_line;
