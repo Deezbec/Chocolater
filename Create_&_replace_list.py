@@ -3,14 +3,14 @@ import shutil
 import timeit
 
 
-def remove_list(original_file_path, edit_id):  
+def remove_list(original_file_path, edit_id):
     original_file = open(original_file_path)
     read_flag = 1
     lines = ""
 
-    while(1): 
+    while 1:
         s = original_file.readline()
-        if s.replace("\n", "") == "<!-- start{0} -->".format(edit_id): 
+        if s.replace("\n", "") == "<!-- start{0} -->".format(edit_id):
             read_flag = 0
             lines += "<!-- start{0} -->\n".format(edit_id)
         if s.replace("\n", "") == "<!-- end{0} -->".format(edit_id):   read_flag = 1
@@ -24,21 +24,21 @@ def remove_list(original_file_path, edit_id):
 
 def put_new_list(original_file_path, editted_info_path, edit_id):
     original_file = open(original_file_path)
-    editted_info  = open(editted_info_path)
+    editted_info = open(editted_info_path)
     read_flag = 1
     lines = ""
     s = ""
 
-    while(1):
-        if read_flag:     
+    while 1:
+        if read_flag:
             s = original_file.readline()
-        if not read_flag: 
+        if not read_flag:
             s = editted_info.readline()
-            if s.replace("\n", "") == "<!-- end{0} -->".format(edit_id):  
+            if s.replace("\n", "") == "<!-- end{0} -->".format(edit_id):
                 read_flag = 1
                 continue
         if s.replace("\n", "") == "<!-- start{0} -->".format(edit_id): read_flag = 0
-        
+
         lines += s
 
         if s == "": break
@@ -51,6 +51,7 @@ def put_new_list(original_file_path, editted_info_path, edit_id):
 def icon_link_creator(splitted_list, temp_file_path):
     if splitted_list[3] == "": p_img_extension = "png"
     else:                      p_img_extension = splitted_list[3].replace("\"", "")
+    if splitted_list[1] == "": p_img_extension = "no_auto_img.lol"
 
     if len(p_img_extension) <= 5:
         os.system("choco info \"{0}\" >> {1}".format(splitted_list[1], temp_file_path))
@@ -65,11 +66,12 @@ def icon_link_creator(splitted_list, temp_file_path):
 
         package_img = "<img src=\"https://community.chocolatey.org/content/packageimages/{0}.{1}\" width=\"16\" height=\"16\">".format(link, p_img_extension)
     else:
-        img_path = os.path.abspath(os.curdir).replace("\list_editing", "") + "\\icons\\" #on local pc    #"list editing" and "icons" should be variable
-        #img_path = "https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/"
+        if if_local_from: img_path = os.path.abspath(os.curdir).replace("\\list_editing", "") + "\\icons\\"  # on local pc    # "list editing" and "icons" should be variable
+        else: img_path = "https://raw.githubusercontent.com/{0}}/main/icons/".format(github_repo_link)
         package_img = "<img src=\"{0}{1}.{2}\" width=\"16\" height=\"16\">".format(img_path, splitted_list[0], p_img_extension[6:])
 
     return package_img
+
 
 def main_list_creator(list_path, temp_file_path):
     f = open(list_path)
@@ -97,19 +99,19 @@ def main_list_creator(list_path, temp_file_path):
             splitted_list = i.split(",")
             if i[0] == "#":
                 f = open(temp_file_path, "a")
-                if i == "#\\\\\\": 
+                if i == "#\\\\\\":
                     f.write("<!-- end_comment -->\n")
                 else:
-                    f.write("<br>" +  i[1:] + "\n")
+                    f.write("<br>" + i[1:] + "\n")
                 continue
             package_img = icon_link_creator(splitted_list, temp_file_path)
             package_link_html_opened = "<a href=\"https://community.chocolatey.org/packages/{0}\" target=\"_blank\">".format(
                 splitted_list[1])
-            link_icon = "<img src=\"https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg\" width=\"16\" height=\"16\">"
-            winget_icon = "<img src=\"https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.webp\" width=\"16\" height=\"16\">"
+            link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
+            winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.webp\" width=\"16\" height=\"16\">".format(github_repo_link)
             winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(
                 splitted_list[2])
-            #winget_icon = ""
+            # winget_icon = ""
             if splitted_list[2] == "": winget_icon = ""
             final += (
                 "\n\n<input class=\"form-check-input\" type=\"checkbox\" name=\"app\" id=\",{1},{0},{2}\" value=\",{1},{0},{2}\">\n".format(
@@ -127,7 +129,6 @@ def main_list_creator(list_path, temp_file_path):
                 final += "<label class=\"form-check-label\" for=\",{3},{1},{2}\">{0}{6}{7}</a></label><br>".format(
                     splitted_list[0], splitted_list[1], splitted_list[2], current_group, package_img,
                     package_link_html_opened, winget_package_htmlopened, winget_icon)
-                
 
     final += "\n</div> \n\n"
     final += "<!-- end -->\n"
@@ -138,35 +139,31 @@ def main_list_creator(list_path, temp_file_path):
 
 
 # Main
-
+if_local_from = "PC"
+github_repo_link = "Deezbec/Chocolater-and-WinGeter"
 # Default_info
 html_file_name = "generator.html"
 generator_path = os.path.abspath(os.curdir) + "\\" + html_file_name
-list_path = os.path.abspath(os.curdir) + "\\" +  "list.csv"
+list_path = os.path.abspath(os.curdir) + "\\" + "list.csv"
 temp_file_path = os.path.abspath(os.curdir) + "\\" + "temp_file.txt"
 open(temp_file_path, "w").close()
 shutil.copyfile(generator_path, generator_path.replace(html_file_name, html_file_name[:-5] + "_list_replaced" + html_file_name[-5:]))
 generator_path = generator_path.replace(html_file_name, html_file_name[:-5] + "_list_replaced" + html_file_name[-5:])
 
-# User info
-#input_text = input('Write html file name (default: generator.html): ')
-#if not (input_text == ""): generator_path = input_text
-#input_text = input("Write new list file name (default: list.csv): ")
-#if not (input_text == ""): list_path = input_text
-#input_text = input("Edit settings? (default: no):") 
-#if not (input_text == "") and not (input_text == "no"):
-#    if input("Run main_list_creator? (\"\" - yes; \"no\" - no) ") == "no":
-#        if_run_main_list_creator = 0
+input_text = input("Edit settings? (default: no):")
+if not (input_text == "") and not (input_text == "no"):
+   if input("Get local images from? (PC: \"\" - default; github: \"g\"): ") == "g":
+       if_local_from = "github"
 
 
 main_list_creator(list_path, temp_file_path)
 remove_list(generator_path, "")  # remove list
-remove_list(generator_path, "_comment") # remove notes
-put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" +  "html_formatted_list.txt", "")
-put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" +  "temp_file.txt", "_comment")
+remove_list(generator_path, "_comment")  # remove notes
+put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" + "html_formatted_list.txt", "")
+put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" + "temp_file.txt", "_comment")
 
 os.remove(temp_file_path)
-os.remove(os.path.abspath(os.curdir) + "\\" +  "html_formatted_list.txt")
+os.remove(os.path.abspath(os.curdir) + "\\" + "html_formatted_list.txt")
 
 print("Completed!")
-#input()
+# input()
