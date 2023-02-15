@@ -16,8 +16,7 @@ Remark about "Select all from group" check box: <br> While it is active checking
 ## Want to create your own list?
 
 1) Download the source code
-2) Copy "generator.hmtl" and "list.csv" to "list editing" folder
-3) Edit "list.csv" (I personally do this with VS code's "edit CSV" extension)<br><br>
+2) Edit "list.csv" (I personally do this with VS code's "edit CSV" extension)<br><br>
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
@@ -37,11 +36,11 @@ They should be place on the bottom of list.csv file
 Each line have to be started with "#"  
 Comment section ends with: "#\\\\\\"  
 
-4) Run "Create & replace list.py"  
+3) Run "Create & replace list.py"  
 For some reason I can't run it without IDE, no idea how to fix  
 That's why I recommend you to launch it in VS code with python or any other IDE  
 if everything is ok, you will see your programs names with the latest version found on Chocolatey  
-Program should end with "Completed"  
+Program should end with "Completed!"  
 If you have any problems, feel free to msg me on discord Deezbec#2094 or create a ticket on github  
 
 ------------
@@ -49,7 +48,6 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 
 ### Feature ideas:  
 1) hover program summery;  
-2) another way of adding icons  
 
 ### Known issues:  
 
