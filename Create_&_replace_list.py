@@ -1,5 +1,6 @@
 import os
 import shutil
+import timeit
 
 
 def remove_list(original_file_path, edit_id):  
@@ -152,7 +153,7 @@ generator_path = generator_path.replace(html_file_name, html_file_name[:-5] + "_
 #if not (input_text == ""): generator_path = input_text
 #input_text = input("Write new list file name (default: list.csv): ")
 #if not (input_text == ""): list_path = input_text
-#input_text = input("edit settings? (default: no): 
+#input_text = input("Edit settings? (default: no):") 
 #if not (input_text == "") and not (input_text == "no"):
 #    if input("Run main_list_creator? (\"\" - yes; \"no\" - no) ") == "no":
 #        if_run_main_list_creator = 0
@@ -165,6 +166,7 @@ put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" +  "html_formatte
 put_new_list(generator_path, os.path.abspath(os.curdir) + "\\" +  "temp_file.txt", "_comment")
 
 os.remove(temp_file_path)
+os.remove(os.path.abspath(os.curdir) + "\\" +  "html_formatted_list.txt")
 
 print("Completed!")
 #input()
