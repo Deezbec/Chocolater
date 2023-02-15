@@ -42,9 +42,12 @@ Program should end with "Completed"<br>
 If you have any problems, feel free to msg me on discord Deezbec#2094 or create a ticket on github <br>
 
 ------------
-<br>
-Feature ideas: hover program summery; another way of adding icons<br>
-Known issues: an extra "<!-- end{} -->" appears each time the list is edited<br>
+## Development notes
+Feature ideas: <br>
+hover program summery;<br>
+another way of adding icons<br><br>
+Known issues: <br>
+An extra "<!-- end{} -->" appears each time the list is edited<br>
 Its doesn't affect the way program works, just a bit annoying 
 ------------
 ### License
