@@ -42,7 +42,7 @@ Program should end with "Completed"<br>
 If you have any problems, feel free to msg me on discord Deezbec#2094 or create a ticket on github <br>
 
 ------------
-## Development notes
+## Development notes <br>
 Feature ideas: <br>
 hover program summery;<br>
 another way of adding icons<br><br>
