@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Chocolater</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .form-check-label {
+            font-weight: 400;
+            font-size: .8rem;
+        }
+        .form-check-label:hover {
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .form-check {
+            width: 275px;
+            padding: 20px;
+        }
+        .chocoInst {color: red}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <img src="https://raw.githubusercontent.com/mariosemes/Chocolater/main/images/simple-logo.jpg">
+                <h4>Easy App Installer <a href="https://github.com/Deezbec/Chocolater-and-WinGeter" class="btn btn-dark" role="button">GitHub</a> <a href="https://discord.gg/EJE9UJVbsN" class="btn btn-dark" role="button">Join Discord</a></h4>
+                <p> Deezbec edition </p>
+                <hr/>
+            </div>       
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <div data-toggle="buttons">
+                    <label class="btn btn-primary btn-info">
+                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM1" value="choco" checked="checked"> Chocolatey
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM2" value="winget"> WinGet
+                    </label>
+
+                    <br>
+
+                    <label class="btn btn-primary btn-lg">
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection1" value="install" checked="checked"> Install
+                    </label>
+                    <label class="btn btn-danger btn-lg">
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall"> Uninstall
+                    </label>
+                </div>
+            </div>       
+        </div>
+
+
+
+        <form>
+            <div class="d-flex align-content-start flex-wrap">
+<!-- start -->
+<div class="form-check">
+<input class="form-check-input" type="checkbox" name="category" id="Browser" value="Browser">
+<label class="form-check-label" for="Browser"><h3>Browser</h3></label> <br>
+
+<input class="form-check-input" type="checkbox" name="app" id=",Browser,brave,BraveSoftware.BraveBrowser" value=",Browser,brave,BraveSoftware.BraveBrowser">
+<label class="form-check-label" for=",Browser,brave,BraveSoftware.BraveBrowser"><img src="https://community.chocolatey.org/content/packageimages/brave.1.46.153.svg" width="16" height="16"> Brave <a href="https://community.chocolatey.org/packages/brave" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=BraveSoftware.BraveBrowser" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.webp" width="16" height="16"></a></label><br>
+
+<input class="form-check-input" type="checkbox" name="app" id=",Browser,firefox,Mozilla.Firefox" value=",Browser,firefox,Mozilla.Firefox">
+<label class="form-check-label" for=",Browser,firefox,Mozilla.Firefox"><img src="https://community.chocolatey.org/content/packageimages/firefox.110.0.svg" width="16" height="16"> Firefox <a href="https://community.chocolatey.org/packages/firefox" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=Mozilla.Firefox" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.webp" width="16" height="16"></a></label><br>
+
+<input class="form-check-input" type="checkbox" name="app" id=",Browser,freedownloadmanager,SoftDeluxe.FreeDownloadManager" value=",Browser,freedownloadmanager,SoftDeluxe.FreeDownloadManager">
+<label class="form-check-label" for=",Browser,freedownloadmanager,SoftDeluxe.FreeDownloadManager"><img src="C:\!User\Git\Chocolater\icons\FDMtorrent.png" width="16" height="16"> FDMtorrent <a href="https://community.chocolatey.org/packages/freedownloadmanager" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=SoftDeluxe.FreeDownloadManager" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.webp" width="16" height="16"></a></label><br>
+</div> 
+
+<!-- end -->
+            </div> 
+
+            <div class="row mt-5">
+                <div class="col">
+                    <input type="button" id="saveButton" name="saveButton" class="btn btn-success btn-lg btn-block" value="Generate code" onclick="saveBat()" />
+                </div>
+            </div>
+        </form>
+
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Usage:</h2>
+                <ul class="list-group">
+                
+                    <li class="list-group-item">1. Run PowerShell as Administrator</li>
+                    <li class="list-group-item">2. Install choco by running <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('chocoInst')">Copy code to Clipboard</button></li>
+                    <li class="list-group-item bg-light"><code id="chocoInst">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</code></li>
+                    <li class="list-group-item">3. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows')">Copy code to Clipboard</button></li>
+                    <li class="list-group-item bg-light"><code id="windows">Code will show up here after you generate it.</code></li>
+                    <li class="list-group-item">4. Paste the Code into PowerShell and press Enter(*)</li>
+                    <li class="list-group-item">5. Now sit, relax and watch it work for you.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-5">
+            <div class="col">
+                <p>* By using the script, you agree to use the Chocolatey Software Management Tool and all associated applications at your own risk.
+<!-- start_comment -->
+<br><h4> Not tested progs </h4>
+<br>darktable gimp inkscape krita - фоторедакторы
+<br>kdenlive olive openshot - видередакторы
+<!-- end_comment -->
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    function saveBat() {
+        var radios = document.getElementsByName('UserSelection');
+        var radiosPM = document.getElementsByName('UserSelectionPM');
+        for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked) {
+            user_selection = radios[i].value;
+            //break;
+          }
+          if(radiosPM[i].checked) {
+            user_selectionPM = radiosPM[i].value;
+          }
+        }
+
+        var app = document.forms[0];
+        var app_list = "";
+        var i;
+        var selected_category;
+        for (i = 0; i < app.length; i++) {
+            if(app[i].value.split(/,/)[1] == selected_category && selected_category != undefined){
+                    if (app[i].checked == false && user_selectionPM == "choco") { app_list = app_list + app[i].value.split(/,/)[2] + " "; }
+                    if (app[i].checked == false && user_selectionPM == "winget") { app_list = app_list + app[i].value.split(/,/)[3]  + " "; }
+                }
+            else{
+                    if (app[i].checked == true) {
+                        if(app[i].name == "category") {selected_category = app[i].value}
+                        if(app[i].value[0] == ',') {
+                        if (user_selectionPM == "choco") { app_list = app_list + app[i].value.split(/,/)[2]  + " "; }
+                        if (user_selectionPM == "winget") { app_list = app_list + app[i].value.split(/,/)[3]  + " "; }
+                        }
+            }
+            }
+        }        
+        if (user_selectionPM == "choco") {var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list + '-y ';}
+        else { var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list; }
+
+        if (app_list) {
+            document.getElementById('windows').innerHTML = windows_line;
+        } else {
+            document.getElementById('windows').innerHTML = "No apps selected. Please choose your apps to create your installation code.";
+        }
+    }
+
+    function CopyToClipboard (containerid) {
+      const textarea = document.createElement('textarea')
+      textarea.id = 'temp_element'
+      textarea.style.height = 0
+      document.body.appendChild(textarea)
+      textarea.value = document.getElementById(containerid).innerText
+      const selector = document.querySelector('#temp_element')
+      selector.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+    }
+
+</script>
+</html>
