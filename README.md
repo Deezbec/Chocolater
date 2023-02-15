@@ -21,7 +21,9 @@ Columns stand for:
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
 3rd - WinGet pack name (optional)  
-4th - What is icon on chocolatey package page extension (default - png)<br><br>
+4th - What is icon on chocolatey package page extension (default - png)  
+      Or what is extension of local icon. format - "local.<format>"  
+5th - extra link, mainly for programs with no available packages (example - win10 tweaker on my list)<br><br>
 Rows:  
 Can be devided to 3 categories:  
 1st -  Group  
