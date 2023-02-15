@@ -135,7 +135,7 @@ def main_list_creator(list_path, temp_file_path):
 
 
 # Main
-if_local_from = 1
+if_local_from = 0
 github_repo_link = "Deezbec/Chocolater-and-WinGeter"
 # Default_info
 html_file_name = "generator.html"
@@ -148,7 +148,7 @@ generator_path = generator_path.replace(html_file_name, html_file_name[:-5] + "_
 
 input_text = input("Edit settings? (default: no): ")
 if not (input_text == "") and not (input_text == "no"):
-   if input("Get local images from? (PC: \"\" - default; github: \"g\"): ") == "g":
+   if input("Get local images from? (github: \"\" - default; local: \"l\"): ") == "l":
        if_local_from = 0
 
 

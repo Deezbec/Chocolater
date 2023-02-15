@@ -87,21 +87,21 @@ LockHunter,lockhunter,CrystalRich.LockHunter,
 ThrottleStop,throttlestop,,local.png
 ,,,
 *Not in Choco,,,
-Caustic,,,
+Caustic,,,local.png
 Mozilla Thunder bird,,Mozilla.Thunderbird,local.jpg
 Kaspersky Security Cloud,,Kaspersky.SecurityCloud,local.svg
-OutPlayed,,,
-Disk Drill,,,
+OutPlayed,,,local.png
+Disk Drill,,,local.webp
 ISLC - standby list cleaner,,,
 ,,,
 ,,,
 *Tweakers not in choco,,,
-win10 tweaker,,,
-privatezilla,,,
-Booster X,,,
-OOSU10,,,
-reg organiser,,,
-Ultimate win tweaker,,,
+win10 tweaker,,,local.png
+privatezilla,,,local.ico
+Booster X,,,local.png
+OOSU10,,,local.png
+reg organiser,,,local.png
+Ultimate win tweaker,,,local.svg
 ,,,
 %Pack 1,,,
 Brave,brave,Brave.Brave,svg
