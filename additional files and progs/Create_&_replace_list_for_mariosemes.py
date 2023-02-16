@@ -95,6 +95,8 @@ def main_list_creator(list_path, temp_file_path):
             if i[0] == '%': group_type = 2
         else:
             splitted_list = i.split(",")
+            if splitted_list[1].replace("/","") != splitted_list[1]:
+                splitted_list[1] = splitted_list[1].split("/")[0] + "--version=" + splitted_list[1].split("/")[1]
             if i[0] == "#":
                 f = open(temp_file_path, "a")
                 if i == "#\\\\\\": f.write("<!-- end_comment -->\n")
