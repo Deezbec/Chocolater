@@ -4,7 +4,7 @@
 [![CLICK TO VISIT GENERATO with Deezbec's progs](https://img.shields.io/badge/Click_To_Visit_Generator-blue.svg?style=for-the-badge)](https://raw.githack.com/Deezbec/Chocolater-and-WinGeter/main/generator.html)
 Deezbec's list
 
-[![CLICK TO VISIT GENERATO with Mariosemes's progs](https://img.shields.io/badge/Click_To_Visit_Generator-blue.svg?style=for-the-badge)](https://raw.githack.com/Deezbec/Chocolater-and-WinGeter/main/additional%20files%20and%20progs/generator_mariosemes_Deezbec_looking.html)
+[![CLICK TO VISIT GENERATO with Mariosemes's progs](https://img.shields.io/badge/Click_To_Visit_Generator-blue.svg?style=for-the-badge)](https://raw.githack.com/Deezbec/Chocolater-and-WinGeter/main/additional%20files%20and%20progs/generator_mariosemes.html)
 Mariosemes's list
 
 Basically it is [Chocolater](https://github.com/mariosemes/Chocolater) by [Mariosemes](https://github.com/mariosemes) with new features:
