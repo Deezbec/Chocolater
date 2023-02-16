@@ -29,9 +29,6 @@
             width: 275px;
             padding: 20px;
         }
-        .chocoInst {color: red}
-        .invis {display: none;}
-        
     </style>
 </head>
 <body>
@@ -39,39 +36,37 @@
         <div class="row mt-4">
             <div class="col">
                 <img src="https://raw.githubusercontent.com/mariosemes/Chocolater/main/images/simple-logo.jpg">
-                <h4>Easy App Installer  
-                    <a href="https://github.com/Deezbec/Chocolater-and-WinGeter" class="btn btn-dark" role="button">GitHub</a>
-                    <a href="https://discord.gg/EJE9UJVbsN" class="btn btn-dark" role="button">Join Discord</a>
-                    <a href="https://chocolatey.org/"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="50" height="50"></a>
-                    <a href="https://github.com/microsoft/winget-cli"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.webp" width="50" height="50"></a>
-                </h4>
+                <h4>Easy App Installer <a href="https://github.com/mariosemes/Chocolater" class="btn btn-dark" role="button">GitHub</a> <a href="https://discord.gg/DsvH4nb2Fk" class="btn btn-dark" role="button">You Can Find Me on Discord</a></h4>
                 <hr/>
+                <p>Chocolater is simply a PowerShell code generator and it was conceived in order to facilitate the selection and installation of your favorite applications in one go.</p>
+
+                <p>Chocolater uses Chocolatey Software Management Tool to install all selected applications, and therefor Chocolatey will be installed too.</p>
+
+                <p>This is a Open Source project and we are not responsible in case of application failure or similar issues. All informations about Chocolatey can be found here <a href="https://community.chocolatey.org/">community.chocolatey.org</a></p>
             </div>       
         </div>
 
         <div class="row mt-5">
             <div class="col">
+                <h2>Select your action:</h2>
+                <hr>
                 <div data-toggle="buttons">
-                    <label class="btn btn-primary btn-info">
-                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM1" value="choco" onclick="updateBat()" checked="checked"> Chocolatey 
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="UserSelectionPM" autocomplete="off" id="UserSelectionPM2" value="winget" onclick="updateBat()"> WinGet 
-                    </label>
-
-                    <br>
-                    
                     <label class="btn btn-primary btn-lg">
-                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection1" value="install" onclick="updateBat()" checked="checked"> Install
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection1" value="install" checked="checked"> Install
                     </label>
                     <label class="btn btn-danger btn-lg">
-                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall" onclick="updateBat()"> Uninstall
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall"> Uninstall
                     </label>
                 </div>
             </div>       
         </div>
 
-
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Select your apps:</h2>
+                <hr>
+            </div>       
+        </div>
 
         <form>
             <div class="d-flex align-content-start flex-wrap">
@@ -514,122 +509,56 @@
 </div> 
 
 <!-- end -->
-            </div> 
+            </div>
 
             <div class="row mt-5">
                 <div class="col">
                     <input type="button" id="saveButton" name="saveButton" class="btn btn-success btn-lg btn-block" value="Generate code" onclick="saveBat()" />
                 </div>
             </div>
-            
         </form>
-
-        <div class="row mt-5">
-            <div class="col">
-                <div data-toggle="buttons">
-                    <label class="btn btn-primary btn-info" id="UserSelectionPM1_checker" style="display: inline-block;">Chocolatey</label>
-                    <label class="btn btn-secondary" id="UserSelectionPM2_checker" style="display: none;"> WinGet </label>
-
-                    <label class="btn btn-primary" id="UserSelection1_checker" style="display: inline-block;">Install </label>
-                     <label class="btn btn-danger" id="UserSelection2_checker" style="display: none;"> Uninstall</label>
-                </div>
-            </div>       
-        </div>
 
         <div class="row mt-5">
             <div class="col">
                 <h2>Usage:</h2>
                 <ul class="list-group">
-                
-                    <li class="list-group-item">0. Check your selection above    <a href="#">click to get up<a></li>
                     <li class="list-group-item">1. Run PowerShell as Administrator</li>
-                    <li class="list-group-item">2. Install choco by running <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('chocoInst')">Copy code to Clipboard</button></li>
-                    <li class="list-group-item bg-light"><code id="chocoInst">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</code></li>
-                    <li class="list-group-item">3. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows')">Copy code to Clipboard</button></li>
-                    <li class="list-group-item bg-light"><code id="windows">Code will show up here after you generate it.</code></li>
-                    <li class="list-group-item">4. Paste the Code into PowerShell and press Enter(*)</li>
-                    <li class="list-group-item">5. Now sit, relax and watch it work for you.</li>
+                    <li class="list-group-item">2. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows')">Copy code to Clipboard</button></li>
+                    <li class="list-group-item bg-light"><code id="windows"><bold>Code will show up here after you generate it.</bold></code></li>
+                    <li class="list-group-item">3. Paste the Code into PowerShell and press Enter(*)</li>
+                    <li class="list-group-item">4. Now sit, relax and watch it work for you.</li>
                 </ul>
             </div>
         </div>
 
         <div class="row mt-5 mb-5">
             <div class="col">
-                <p>* By using the script, you agree to use the Chocolatey Software Management Tool and all associated applications at your own risk.
-<!-- start_comment -->
-<!-- end_comment -->
-                </p>
+                <p>* By using the script, you agree to use the Chocolatey Software Management Tool and all associated applications at your own risk.</p>
             </div>
         </div>
 
     </div>
 </body>
 <script>
-    function updateBat(){
-        var radios = document.getElementsByName('UserSelection');
-        var radiosPM = document.getElementsByName('UserSelectionPM');
-        for (var i = 0, length = radios.length; i < length; i++) {
-          if (radios[i].checked) {
-            user_selection = radios[i].value;
-            if(user_selection == "install") 
-            {document.getElementById("UserSelection1_checker").style.display="inline-block"
-            document.getElementById("UserSelection2_checker").style.display="none"}
-            else {document.getElementById("UserSelection2_checker").style.display="inline-block"
-            document.getElementById("UserSelection1_checker").style.display="none"}
-            //break;
-          }
-          if(radiosPM[i].checked) {
-            user_selectionPM = radiosPM[i].value;
-            if(user_selectionPM == "choco") {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM2_checker").style.display="none"}
-            else {document.getElementById("UserSelectionPM2_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM1_checker").style.display="none"}
-            //break;
-          }
-        }
-    }
-
     function saveBat() {
         var radios = document.getElementsByName('UserSelection');
-        var radiosPM = document.getElementsByName('UserSelectionPM');
         for (var i = 0, length = radios.length; i < length; i++) {
           if (radios[i].checked) {
             user_selection = radios[i].value;
-            //break;
-          }
-          if(radiosPM[i].checked) {
-            user_selectionPM = radiosPM[i].value;
+            break;
           }
         }
 
         var app = document.forms[0];
         var app_list = "";
         var i;
-        var selected_category;
         for (i = 0; i < app.length; i++) {
-            if(app[i].value.split(/,/)[1] == selected_category && selected_category != undefined){
-                    if (app[i].checked == false && user_selectionPM == "choco") { app_list = app_list + app[i].value.split(/,/)[2] + " "; }
-                    if (app[i].checked == false && user_selectionPM == "winget") { app_list = app_list + app[i].value.split(/,/)[3]  + " "; }
-                }
-            else{
-                    if (app[i].checked == true) {
-                        if(app[i].name == "category") {selected_category = app[i].value}
-                        if(app[i].value[0] == ',') {
-                        if (user_selectionPM == "choco") { app_list = app_list + app[i].value.split(/,/)[2]  + " "; }
-                        if (user_selectionPM == "winget") { app_list = app_list + app[i].value.split(/,/)[3]  + " "; }
-                        }
-            }
+            if (app[i].checked) {
+              app_list = app_list + app[i].value + " ";
             }
         }        
-        if (user_selectionPM == "choco") {var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list + '-y ';}
-        else { 
-            var windows_line = "";
-            app_list = app_list.split(" ")
-            for (i = 0; i < app_list.length - 1; i++) {
-            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; }
-            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}
-            }
-        }
+
+        var windows_line = 'iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\')); SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"; choco ' + user_selection + ' ' + app_list + '-y ';
 
         if (app_list) {
             document.getElementById('windows').innerHTML = windows_line;
