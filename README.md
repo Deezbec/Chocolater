@@ -19,16 +19,17 @@ Remark about "Select all from group" check box: <br> While it is active checking
 ## Want to create your own list?
 
 1) Download the source code
-2) Edit "list.csv" (I personally do this with VS code's "edit CSV" extension)<br><br>
+2) Edit "list.csv" (I personally do this with VS code's [edit CSV](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv) extension)<br><br>
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
+if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"
 3rd - WinGet pack name (optional)  
 4th - What is icon on chocolatey package page extension (default - png)  
       Or what is extension of local icon. example - "local.{format}"  
 5th - Extra link, mainly for programs with no available packages (example - win10 tweaker on my list)<br><br>
 Rows:  
-Can be devided to 3 categories:  
+Can be devided to 3 categories:<br><br>
 1st -  Group  
 Groups can start with:  "\*","%"  
 "\*" - standart list  
@@ -38,7 +39,7 @@ Just Enter all the needed information for the entry<br><br>
 3rd - Comments  
 They should be place on the bottom of list.csv file  
 Each line have to be started with "#"  
-Comment section ends with: "#\\\\\\"  
+Comment section ends with: "#\\\\\\" KEEP IT EVEN IF YOU DONT NEED COMMENTS
 
 3) Run "Create & replace list.py"  
 For some reason I can't run it without IDE, no idea how to fix  
@@ -53,7 +54,9 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 ### Feature ideas:  
 1) hover program summery;  
 
+
 ### Known issues:  
+1) if there is no "#\\\\\\" in the end of .csv file, it does not work properly 
 
 
 
