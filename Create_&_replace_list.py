@@ -95,24 +95,26 @@ def main_list_creator(list_path, temp_file_path):
             if i[0] == '%': group_type = 2
         else:
             splitted_list = i.split(",")
-            if splitted_list[1].replace("/","") != splitted_list[1]:
-                splitted_list[1] = splitted_list[1].split("/")[0] + " --version=" + splitted_list[1].split("/")[1]
             if i[0] == "#":
                 f = open(temp_file_path, "a")
-                if i == "#\\\\\\": f.write("<!-- end_comment -->\n")
+                if (i.replace("\\", "") == "#") and (i.replace("\\", "") != i): f.write("<!-- end_comment -->\n")
                 else:              f.write("<br>" + i[1:] + "\n")
                 continue
+            if splitted_list[1].replace("/","") != splitted_list[1]:
+                splitted_list[1] = splitted_list[1].split("/")[0] + " --version=" + splitted_list[1].split("/")[1]
+            
             package_img = icon_link_creator(splitted_list, temp_file_path)
+
             package_link_html_opened = "<a href=\"https://community.chocolatey.org/packages/{0}\" target=\"_blank\">".format(
                 splitted_list[1])
             choco_link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/choco_icon.png\" width=\"16\" height=\"16\">".format(github_repo_link)
+
+            winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(splitted_list[2])
             winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.webp\" width=\"16\" height=\"16\">".format(github_repo_link)
-            winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(
-                splitted_list[2])
-            extra_link_html_opened = "<a href=\"{0}\" target=\"_blank\">".format(
-                splitted_list[4])
+
+            extra_link_html_opened = "<a href=\"{0}\" target=\"_blank\">".format(splitted_list[4])
             link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
-            # winget_icon = ""
+
             if package_img[-40:-25] == "no_auto_img.lol": package_img = ""
             if splitted_list[1] == "": choco_link_icon = ""
             if splitted_list[2] == "": winget_icon = ""
@@ -139,12 +141,13 @@ def main_list_creator(list_path, temp_file_path):
 
 
 # Main
-if_local_from = 0
 github_repo_link = "Deezbec/Chocolater-and-WinGeter"
-# Default_info
 html_file_name = "generator.html"
+list_csv_name = "list.csv"
+# Default_info
+if_local_from = 0
 generator_path = os.path.abspath(os.curdir) + "\\" + html_file_name
-list_path = os.path.abspath(os.curdir) + "\\" + "list.csv"
+list_path = os.path.abspath(os.curdir) + "\\" + list_csv_name
 temp_file_path = os.path.abspath(os.curdir) + "\\" + "temp_file.txt"
 open(temp_file_path, "w").close()
 shutil.copyfile(generator_path, generator_path.replace(html_file_name, html_file_name[:-5] + "_list_replaced" + html_file_name[-5:]))
@@ -152,8 +155,11 @@ generator_path = generator_path.replace(html_file_name, html_file_name[:-5] + "_
 
 input_text = input("Edit settings? (default: no): ")
 if not (input_text == "") and not (input_text == "no"):
-   if input("Get local images from? (github: \"\" - default; local: \"l\"): ") == "l":
+    if input("Get local images from? (github: \"\" - default; local: \"l\"): ") == "l":
        if_local_from = 0
+    if input("Change github repo? current: \"{0}\"; default \"no\" ): ".format(github_repo_link)) != "":
+       github_repo_link = input("Type your github repo link: ")
+
 
 
 main_list_creator(list_path, temp_file_path)
