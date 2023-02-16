@@ -11,7 +11,7 @@ Basically it is [Chocolater](https://github.com/mariosemes/Chocolater) by [Mario
 
 1) Simple creation of your own list
 2) Icons for programs are automatically got from chocolatey's program package page
-3) WinGet support(Not figured out how commands work here, so just package names at the moment)
+3) WinGet support
 4) "Select all" from group<br><br>
 Remark about "Select all from group" check box: <br> While it is active checking boxes of entryes of the selected group will remove them from selection
 
