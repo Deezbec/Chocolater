@@ -23,7 +23,7 @@ Remark about "Select all from group" check box: <br> While it is active checking
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
-if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"
+if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"  
 3rd - WinGet pack name (optional)  
 4th - What is icon on chocolatey package page extension (default - png)  
       Or what is extension of local icon. example - "local.{format}"  
