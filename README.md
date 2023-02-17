@@ -24,15 +24,17 @@ Remark about "Select all from group" check box: <br> While it is active checking
 |Displayed name|Choco pack name|WinGet pack name|icon file format or <local.format>|Extra link|  
 |--------------|---------------|----------------|----------------------------------|----------|  
 |Brave|brave|BraveSoftware.BraveBrowser|svg|https://brave.com/|  
-|Syncthing|syncthing|SyncTrayzor.SyncTrayzor|||
-|Ventoy|ventoy||||
+|Python|python/3.9.5|Python.Python|svg||
+|Totalcommander|totalcommander|Ghisler.TotalCommander|||
+|Everything|everything||||
 |win10 tweaker|||local.png||
 |ISLC - standby list cleaner|||||
 
 Result:  
 <label class="form-check-label" for=",Browser,brave,BraveSoftware.BraveBrowser"><img src="https://community.chocolatey.org/content/packageimages/brave.1.46.153.svg" width="16" height="16"> Brave <a href="https://community.chocolatey.org/packages/brave" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=BraveSoftware.BraveBrowser" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="https://brave.com/" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a></label><br>
-<label class="form-check-label" for=",Browser,syncthing,SyncTrayzor.SyncTrayzor"><img src="https://community.chocolatey.org/content/packageimages/syncthing.1.23.1.png" width="16" height="16"> Syncthing <a href="https://community.chocolatey.org/packages/syncthing" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=SyncTrayzor.SyncTrayzor" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="" target="_blank"></a></label><br>
-<label class="form-check-label" for=",Browser,ventoy,"><img src="https://community.chocolatey.org/content/packageimages/ventoy.1.0.88.png" width="16" height="16"> Ventoy <a href="https://community.chocolatey.org/packages/ventoy" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,python --version=3.9.5,Python.Python"><img src="https://community.chocolatey.org/content/packageimages/python.3.9.5.svg" width="16" height="16"> Python <a href="https://community.chocolatey.org/packages/python/3.9.5" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=Python.Python" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,totalcommander,Ghisler.TotalCommander"><img src="https://community.chocolatey.org/content/packageimages/totalcommander.10.51.png" width="16" height="16"> Totalcommander <a href="https://community.chocolatey.org/packages/totalcommander" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=Ghisler.TotalCommander" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,everything,"><img src="https://community.chocolatey.org/content/packageimages/everything.1.4.11022.png" width="16" height="16"> Everything <a href="https://community.chocolatey.org/packages/everything" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 <label class="form-check-label" for=",Browser,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/win10_tweaker.png" width="16" height="16"> win10 tweaker <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 <label class="form-check-label" for=",Browser,,"> ISLC - standby list cleaner <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 
@@ -44,11 +46,12 @@ Result:
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
-if you want to set specific version, add "/<versionNumber>", example "python/3.11.0" ...IN WORK...  
+if you want to set specific version, add "/<versionNumber>", example "python/3.11.0" 
 3rd - WinGet pack name (optional)  
 4th - What is icon on chocolatey package page extension (default - png)  
       Or what is extension of local icon. example - "local.{format}"  
       In program "local" is changed for displayed package name, all the " " are changed for "_"  
+      example: win10_tweaker.png  
 5th - Extra link, mainly for programs with no available packages <br><br>
 Rows:  
 Can be devided to 3 categories:<br><br>
@@ -79,8 +82,7 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 
 ### Known issues:  
 1) if there is no "#\\\\\\" in the end of .csv file, it does not work properly 
-2) if program has version added via /, package link breaks
-3) Icons got from chocolatey website are not stable
+2) Some icons got from chocolatey website are not stable
 
 
 

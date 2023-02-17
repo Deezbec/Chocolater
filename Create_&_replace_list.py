@@ -53,14 +53,17 @@ def icon_link_creator(splitted_list, temp_file_path):
     if splitted_list[1] == "" and len(splitted_list[3]) <= 5: p_img_extension = "no_auto_img.lol"
 
     if len(p_img_extension) <= 5:
-        os.system("choco info \"{0}\" >> {1}".format(splitted_list[1], temp_file_path))
-        choco_info_file = open(temp_file_path, "r+")
-        choco_info_file.readline()
-        choco_info = choco_info_file.readline()
-        choco_info = choco_info.split()
-        link = splitted_list[1] + "." + choco_info[1]
-        choco_info_file.truncate(0)
-        choco_info_file.close()
+        if splitted_list[1].replace("/","") == splitted_list[1]:
+            os.system("choco info \"{0}\" >> {1}".format(splitted_list[1], temp_file_path))
+            choco_info_file = open(temp_file_path, "r+")
+            choco_info_file.readline()
+            choco_info = choco_info_file.readline()
+            choco_info = choco_info.split()
+            link = splitted_list[1] + "." + choco_info[1]
+            choco_info_file.truncate(0)
+            choco_info_file.close()
+        else:
+            link = splitted_list[1].replace("/",".")
         print(link)
 
         package_img = "<img src=\"https://community.chocolatey.org/content/packageimages/{0}.{1}\" width=\"16\" height=\"16\">".format(link, p_img_extension)
@@ -100,8 +103,6 @@ def main_list_creator(list_path, temp_file_path):
                 if (i.replace("\\", "") == "#") and (i.replace("\\", "") != i): f.write("<!-- end_comment -->\n")
                 else:              f.write("<br>" + i[1:] + "\n")
                 continue
-            if splitted_list[1].replace("/","") != splitted_list[1]:
-                splitted_list[1] = splitted_list[1].split("/")[0] + " --version=" + splitted_list[1].split("/")[1]
             
             package_img = icon_link_creator(splitted_list, temp_file_path)
 
@@ -110,11 +111,14 @@ def main_list_creator(list_path, temp_file_path):
             choco_link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/choco_icon.png\" width=\"16\" height=\"16\">".format(github_repo_link)
 
             winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(splitted_list[2])
-            winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.webp\" width=\"16\" height=\"16\">".format(github_repo_link)
+            winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.png\" width=\"16\" height=\"16\">".format(github_repo_link)
 
             extra_link_html_opened = "<a href=\"{0}\" target=\"_blank\">".format(splitted_list[4])
             link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
 
+            if splitted_list[1].replace("/","") != splitted_list[1]:
+                splitted_list[1] = splitted_list[1].split("/")[0] + " --version=" + splitted_list[1].split("/")[1]
+                
             if package_img[-40:-25] == "no_auto_img.lol": package_img = ""
             if splitted_list[1] == "": choco_link_icon = ""
             if splitted_list[2] == "": winget_icon = ""
