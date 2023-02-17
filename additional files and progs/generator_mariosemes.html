@@ -539,16 +539,25 @@
         <div class="row mt-5">
             <div class="col">
                 <h2>Usage:</h2>
-                <ul class="list-group">
-                
+                <ul class="list-group" id="choco_instruction">
+                 
                     <li class="list-group-item">0. Check your selection above    <a href="#">click to get up<a></li>
                     <li class="list-group-item">1. Run PowerShell as Administrator</li>
                     <li class="list-group-item">2. Install choco by running <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('chocoInst')">Copy code to Clipboard</button></li>
                     <li class="list-group-item bg-light"><code id="chocoInst">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</code></li>
-                    <li class="list-group-item">3. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows')">Copy code to Clipboard</button></li>
-                    <li class="list-group-item bg-light"><code id="windows">Code will show up here after you generate it.</code></li>
+                    <li class="list-group-item">3. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows_choco')">Copy code to Clipboard</button></li>
+                    <li class="list-group-item bg-light"><code id="windows_choco">Code will show up here after you generate it.</code></li>
                     <li class="list-group-item">4. Paste the Code into PowerShell and press Enter(*)</li>
                     <li class="list-group-item">5. Now sit, relax and watch it work for you.</li>
+                </ul>
+                <ul class="list-group" id="winget_instruction" style="display: none;">
+                 
+                    <li class="list-group-item">0. Check your selection above    <a href="#">click to get up<a></li>
+                    <li class="list-group-item">1. Run Command prompt(aka cmd) as Administrator</li>
+                    <li class="list-group-item">2. Copy the Code <button type="button" id="copy-to-clip" class="btn btn-primary btn-sm" onclick="CopyToClipboard('windows_winget')">Copy code to Clipboard</button></li>
+                    <li class="list-group-item bg-light"><code id="windows_winget">Code will show up here after you generate it.</code></li>
+                    <li class="list-group-item">3. Paste the Code into PowerShell and press Enter(*)</li>
+                    <li class="list-group-item">4. Now sit, relax and watch it work for you.</li>
                 </ul>
             </div>
         </div>
@@ -582,9 +591,14 @@
           if(radiosPM[i].checked) {
             user_selectionPM = radiosPM[i].value;
             if(user_selectionPM == "choco") {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM2_checker").style.display="none"}
-            else {document.getElementById("UserSelectionPM2_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM1_checker").style.display="none"}
+            document.getElementById("UserSelectionPM2_checker").style.display="none"
+            document.getElementById("choco_instruction").style.display="block"
+            document.getElementById("winget_instruction").style.display="none"}
+            else 
+            {document.getElementById("UserSelectionPM2_checker").style.display="inline-block"
+            document.getElementById("UserSelectionPM1_checker").style.display="none"
+            document.getElementById("winget_instruction").style.display="block"
+            document.getElementById("choco_instruction").style.display="none"}
             //break;
           }
         }
@@ -626,16 +640,20 @@
         else { 
             var windows_line = "";
             app_list = app_list.split(" ")
-            for (i = 0; i < app_list.length - 1; i++) {
-            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; }
-            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}
+            for (i = 0; i < app_list.length - 1; i++) { 
+            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; 
+            //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
+            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+            //Use one of two options
             }
         }
 
         if (app_list) {
-            document.getElementById('windows').innerHTML = windows_line;
+            if(user_selectionPM == "choco") {document.getElementById('windows_choco').innerHTML = windows_line;}
+                else{ document.getElementById('windows_winget').innerHTML = windows_line;}
         } else {
-            document.getElementById('windows').innerHTML = "No apps selected. Please choose your apps to create your installation code.";
+            if(user_selectionPM == "choco"){document.getElementById('windows_choco').innerHTML = "No apps selected. Please choose your apps to create your installation code.";}
+            else { document.getElementById('windows_winget').innerHTML = "No apps selected. Please choose your apps to create your installation code."; }
         }
     }
 
