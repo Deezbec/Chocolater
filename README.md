@@ -19,15 +19,37 @@ Remark about "Select all from group" check box: <br> While it is active checking
 ## Want to create your own list?
 
 1) Download the source code
-2) Edit "list.csv" (I personally do this with VS code's [edit CSV](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv) extension)<br><br>
+2) Edit "list.csv" (I personally do this with VS code's [edit CSV](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv) extension)<br><br>  
+
+|Displayed name|Choco pack name|WinGet pack name|icon file format or <local.format>|Extra link|  
+|--------------|---------------|----------------|----------------------------------|----------|  
+|Brave|brave|BraveSoftware.BraveBrowser|svg|https://brave.com/|  
+|Syncthing|syncthing|SyncTrayzor.SyncTrayzor|||
+|Ventoy|ventoy||||
+|win10 tweaker|||local.png||
+|ISLC - standby list cleaner|||||
+
+Result:  
+<label class="form-check-label" for=",Browser,brave,BraveSoftware.BraveBrowser"><img src="https://community.chocolatey.org/content/packageimages/brave.1.46.153.svg" width="16" height="16"> Brave <a href="https://community.chocolatey.org/packages/brave" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=BraveSoftware.BraveBrowser" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="https://brave.com/" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a></label><br>
+<label class="form-check-label" for=",Browser,syncthing,SyncTrayzor.SyncTrayzor"><img src="https://community.chocolatey.org/content/packageimages/syncthing.1.23.1.png" width="16" height="16"> Syncthing <a href="https://community.chocolatey.org/packages/syncthing" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=SyncTrayzor.SyncTrayzor" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/WinGet_support.png" width="16" height="16"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,ventoy,"><img src="https://community.chocolatey.org/content/packageimages/ventoy.1.0.88.png" width="16" height="16"> Ventoy <a href="https://community.chocolatey.org/packages/ventoy" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/win10_tweaker.png" width="16" height="16"> win10 tweaker <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Browser,,"> ISLC - standby list cleaner <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+
+
+
+
+
+
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
-if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"  
+if you want to set specific version, add "/<versionNumber>", example "python/3.11.0" ...IN WORK...  
 3rd - WinGet pack name (optional)  
 4th - What is icon on chocolatey package page extension (default - png)  
       Or what is extension of local icon. example - "local.{format}"  
-5th - Extra link, mainly for programs with no available packages (example - win10 tweaker on my list)<br><br>
+      In program "local" is changed for displayed package name, all the " " are changed for "_"  
+5th - Extra link, mainly for programs with no available packages <br><br>
 Rows:  
 Can be devided to 3 categories:<br><br>
 1st -  Group  
@@ -57,6 +79,7 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 
 ### Known issues:  
 1) if there is no "#\\\\\\" in the end of .csv file, it does not work properly 
+2) if program has version added via /, package link breaks
 
 
 
