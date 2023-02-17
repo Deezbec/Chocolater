@@ -511,9 +511,11 @@
         else { 
             var windows_line = "";
             app_list = app_list.split(" ")
-            for (i = 0; i < app_list.length - 1; i++) {
-            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; }
-            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}
+            for (i = 0; i < app_list.length - 1; i++) { 
+            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; 
+            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
+            //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+            //Use one of two options
             }
         }
 
