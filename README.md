@@ -11,7 +11,7 @@ Basically it is [Chocolater](https://github.com/mariosemes/Chocolater) by [Mario
 
 1) Simple creation of your own list
 2) Icons for programs are automatically got from chocolatey's program package page
-3) WinGet support(Not figured out how commands work here, so just package names at the moment)
+3) WinGet support
 4) "Select all" from group<br><br>
 Remark about "Select all from group" check box: <br> While it is active checking boxes of entryes of the selected group will remove them from selection
 
@@ -23,7 +23,7 @@ Remark about "Select all from group" check box: <br> While it is active checking
 Columns stand for:  
 1st - Displayed package name  
 2nd - Chocolatey package name (its also used to get icons)  
-if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"
+if you want to set specific version, add "/<versionNumber>", example "python/3.11.0"  
 3rd - WinGet pack name (optional)  
 4th - What is icon on chocolatey package page extension (default - png)  
       Or what is extension of local icon. example - "local.{format}"  
