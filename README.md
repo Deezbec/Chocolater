@@ -80,6 +80,7 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 ### Known issues:  
 1) if there is no "#\\\\\\" in the end of .csv file, it does not work properly 
 2) if program has version added via /, package link breaks
+3) Icons got from chocolatey website are not stable
 
 
 
