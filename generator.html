@@ -67,6 +67,12 @@
                     <label class="btn btn-danger btn-lg">
                         <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection2" value="uninstall" onclick="updateBat()"> Uninstall
                     </label>
+                    <label class="btn btn-outline-primary btn-lg">
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection3" value="pin add --name=" onclick="updateBat()"> Pin
+                    </label>
+                    <label class="btn btn-outline-danger btn-lg">
+                        <input type="radio" name="UserSelection" autocomplete="off" id="UserSelection4" value="pin remove --name=" onclick="updateBat()"> Unpin
+                    </label>
                 </div>
             </div>       
         </div>
@@ -391,7 +397,10 @@
                     <label class="btn btn-secondary" id="UserSelectionPM2_checker" style="display: none;"> WinGet </label>
 
                     <label class="btn btn-primary" id="UserSelection1_checker" style="display: inline-block;">Install </label>
-                     <label class="btn btn-danger" id="UserSelection2_checker" style="display: none;"> Uninstall</label>
+                    <label class="btn btn-danger" id="UserSelection2_checker" style="display: none;"> Uninstall</label>
+
+                    <label class="btn btn-outline-primary" id="UserSelection3_checker" style="display: none;"> Pin </label>
+                    <label class="btn btn-outline-danger" id="UserSelection4_checker" style="display: none;"> Unpin</label>
                 </div>
             </div>       
         </div>
@@ -449,22 +458,33 @@
     </div>
 </body>
 <script>
+    function display_changer(user_selection, type)
+    {
+        for (var i = 1; i < 5; i++)
+        {
+            if (i == user_selection)
+            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="inline-block" }
+            else
+            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="none" }
+        }
+    }
+
     function updateBat(){
         var radios = document.getElementsByName('UserSelection');
         var radiosPM = document.getElementsByName('UserSelectionPM');
         for (var i = 0, length = radios.length; i < length; i++) {
           if (radios[i].checked) {
             user_selection = radios[i].value;
-            if(user_selection == "install") 
-            {document.getElementById("UserSelection1_checker").style.display="inline-block"
-            document.getElementById("UserSelection2_checker").style.display="none"}
-            else {document.getElementById("UserSelection2_checker").style.display="inline-block"
-            document.getElementById("UserSelection1_checker").style.display="none"}
+            if(user_selection == "install") { display_changer(1, "") }
+            if(user_selection == "uninstall") { display_changer(2, "") }
+            if(user_selection == "pin add --name=") { display_changer(3, "") }
+            if(user_selection == "pin remove --name=") { display_changer(4, "") }
             //break;
           }
           if(radiosPM[i].checked) {
             user_selectionPM = radiosPM[i].value;
-            if(user_selectionPM == "choco") {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
+            if(user_selectionPM == "choco") 
+            {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
             document.getElementById("UserSelectionPM2_checker").style.display="none"
             document.getElementById("choco_instruction").style.display="block"
             document.getElementById("winget_instruction").style.display="none"}
@@ -484,10 +504,12 @@
         for (var i = 0, length = radios.length; i < length; i++) {
           if (radios[i].checked) {
             user_selection = radios[i].value;
-            //break;
           }
-          if(radiosPM[i].checked) {
-            user_selectionPM = radiosPM[i].value;
+          if (i <= 1)
+          {
+              if(radiosPM[i].checked) {
+                user_selectionPM = radiosPM[i].value;
+              }
           }
         }
 
@@ -510,15 +532,34 @@
             }
             }
         }        
-        if (user_selectionPM == "choco") {var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list + '-y ';}
+        if (user_selectionPM == "choco") 
+        {
+            if (user_selection != "pin add --name=" && user_selection != "pin remove --name=")
+                { var windows_line = user_selectionPM + ' ' + user_selection + ' ' + app_list + '-y '; }
+            else
+            {
+                var windows_line = "";
+                app_list = app_list.split(" ")
+                for (i = 0; i < app_list.length - 1; i++) { 
+                if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + '\"' + app_list[i] + '\"'; 
+                //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
+                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+                //Use one of two options
+                }
+            }
+        }
         else { 
-            var windows_line = "";
-            app_list = app_list.split(" ")
-            for (i = 0; i < app_list.length - 1; i++) { 
-            if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; 
-            //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
-            if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
-            //Use one of two options
+            if (user_selection == "pin add --name=" || user_selection == "pin remove --name=") {windows_line = "As far as I know Wiget does not support this function"}
+            else
+            {
+                var windows_line = "";
+                app_list = app_list.split(" ")
+                for (i = 0; i < app_list.length - 1; i++) { 
+                if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; 
+                //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
+                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+                //Use one of two options
+                }
             }
         }
 
