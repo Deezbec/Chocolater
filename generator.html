@@ -338,10 +338,10 @@
 <label class="form-check-label" for=",Tweakers,dismplusplus,"><img src="https://community.chocolatey.org/content/packageimages/dismplusplus.10.1.1002.1.png" width="16" height="16"> Dism++ <a href="https://community.chocolatey.org/packages/dismplusplus" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/choco_icon.png" width="16" height="16"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 
 <input class="form-check-input" type="checkbox" name="app" id=",Tweakers,," value=",Tweakers,,">
-<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/Win10_tweaker.png" width="16" height="16"> Win10 tweaker <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="https://win10tweaker.ru/" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a></label><br>
+<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/win10_tweaker.png" width="16" height="16"> win10 tweaker <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="https://win10tweaker.ru/" target="_blank"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/images/url.svg" width="16" height="16"></a></label><br>
 
 <input class="form-check-input" type="checkbox" name="app" id=",Tweakers,," value=",Tweakers,,">
-<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/Privatezilla.ico" width="16" height="16"> Privatezilla <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/privatezilla.ico" width="16" height="16"> privatezilla <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 
 <input class="form-check-input" type="checkbox" name="app" id=",Tweakers,," value=",Tweakers,,">
 <label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/Booster_X.png" width="16" height="16"> Booster X <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
@@ -350,7 +350,7 @@
 <label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/OOSU10.png" width="16" height="16"> OOSU10 <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 
 <input class="form-check-input" type="checkbox" name="app" id=",Tweakers,," value=",Tweakers,,">
-<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/Reg_organiser.png" width="16" height="16"> Reg organiser <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
+<label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/reg_organiser.png" width="16" height="16"> reg organiser <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
 
 <input class="form-check-input" type="checkbox" name="app" id=",Tweakers,," value=",Tweakers,,">
 <label class="form-check-label" for=",Tweakers,,"><img src="https://raw.githubusercontent.com/Deezbec/Chocolater-and-WinGeter/main/icons/Ultimate_win_tweaker.svg" width="16" height="16"> Ultimate win tweaker <a href="https://community.chocolatey.org/packages/" target="_blank"></a><a href="https://wingetgui.com/apps?id=" target="_blank"></a><a href="" target="_blank"></a></label><br>
@@ -460,12 +460,12 @@
 <script>
     function display_changer(user_selection, type)
     {
-        for (var i = 1; i < 5; i++)
+        for (var i = 1; i <= 4; i++)
         {
             if (i == user_selection)
-            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="inline-block" }
+            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="inline-block"; }
             else
-            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="none" }
+            { document.getElementById(`UserSelection${type}${i}_checker`).style.display="none"; }
         }
     }
 
@@ -473,27 +473,32 @@
         var radios = document.getElementsByName('UserSelection');
         var radiosPM = document.getElementsByName('UserSelectionPM');
         for (var i = 0, length = radios.length; i < length; i++) {
-          if (radios[i].checked) {
+          if (radios[i].checked) 
+          {
             user_selection = radios[i].value;
-            if(user_selection == "install") { display_changer(1, "") }
-            if(user_selection == "uninstall") { display_changer(2, "") }
-            if(user_selection == "pin add --name=") { display_changer(3, "") }
-            if(user_selection == "pin remove --name=") { display_changer(4, "") }
+            if(user_selection == "install") { display_changer(1, ""); }
+            if(user_selection == "uninstall") { display_changer(2, ""); }
+            if(user_selection == "pin add --name=") { display_changer(3, ""); }
+            if(user_selection == "pin remove --name=") { display_changer(4, ""); }
             //break;
           }
-          if(radiosPM[i].checked) {
-            user_selectionPM = radiosPM[i].value;
-            if(user_selectionPM == "choco") 
-            {document.getElementById("UserSelectionPM1_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM2_checker").style.display="none"
-            document.getElementById("choco_instruction").style.display="block"
-            document.getElementById("winget_instruction").style.display="none"}
-            else 
-            {document.getElementById("UserSelectionPM2_checker").style.display="inline-block"
-            document.getElementById("UserSelectionPM1_checker").style.display="none"
-            document.getElementById("winget_instruction").style.display="block"
-            document.getElementById("choco_instruction").style.display="none"}
-            //break;
+          if (i <= 1)
+          {
+              if(radiosPM[i].checked) 
+              {
+                user_selectionPM = radiosPM[i].value;
+                if(user_selectionPM == "choco") 
+                {document.getElementById("UserSelectionPM1_checker").style.display="inline-block";
+                document.getElementById("UserSelectionPM2_checker").style.display="none";
+                document.getElementById("choco_instruction").style.display="block";
+                document.getElementById("winget_instruction").style.display="none";}
+                else 
+                {document.getElementById("UserSelectionPM2_checker").style.display="inline-block";
+                document.getElementById("UserSelectionPM1_checker").style.display="none";
+                document.getElementById("winget_instruction").style.display="block";
+                document.getElementById("choco_instruction").style.display="none";}
+                //break;
+              }
           }
         }
     }
@@ -524,7 +529,7 @@
                 }
             else{
                     if (app[i].checked == true) {
-                        if(app[i].name == "category") {selected_category = app[i].value}
+                        if(app[i].name == "category") {selected_category = app[i].value;}
                         if(app[i].value[0] == ',') {
                         if (user_selectionPM == "choco") { app_list = app_list + app[i].value.split(/,/)[2]  + " "; }
                         if (user_selectionPM == "winget") { app_list = app_list + app[i].value.split(/,/)[3]  + " "; }
@@ -543,21 +548,21 @@
                 for (i = 0; i < app_list.length - 1; i++) { 
                 if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + '\"' + app_list[i] + '\"'; 
                 //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
-                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '; }} // "&" for cmd
                 //Use one of two options
                 }
             }
         }
         else { 
-            if (user_selection == "pin add --name=" || user_selection == "pin remove --name=") {windows_line = "As far as I know Wiget does not support this function"}
+            if (user_selection == "pin add --name=" || user_selection == "pin remove --name=") {windows_line = "As far as I know Winget does not support this function"}
             else
             {
                 var windows_line = "";
-                app_list = app_list.split(" ")
+                app_list = app_list.split(" ");
                 for (i = 0; i < app_list.length - 1; i++) { 
                 if(app_list[i] != "") { windows_line = windows_line + user_selectionPM + ' ' + user_selection + ' --id=' + app_list[i]; 
-                //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; '}} // ";" for Power shell
-                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & '}} // "&" for cmd
+                //if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' ; ';}} // ";" for Power shell
+                if (!(i == app_list.length - 2)) { windows_line = windows_line +  ' & ';}} // "&" for cmd
                 //Use one of two options
                 }
             }
