@@ -50,7 +50,8 @@ def put_new_list(original_file_path, editted_info_path, edit_id):
 def icon_link_creator(splitted_list, temp_file_path):
     if splitted_list[3] == "": p_img_extension = "png"
     else:                      p_img_extension = splitted_list[3].replace("\"", "")
-    if splitted_list[1] == "" and len(splitted_list[3]) <= 5: p_img_extension = "no_auto_img.lol"
+    if (splitted_list[1] == "" and len(splitted_list[3]) <= 5): p_img_extension = "no_auto_img.lol"
+    if (not(if_get_choco_icons) and len(splitted_list[3]) <= 5): p_img_extension = "no_auto_img.lol"
 
     if len(p_img_extension) <= 5:
         if splitted_list[1].replace("/","") == splitted_list[1]:
@@ -71,6 +72,7 @@ def icon_link_creator(splitted_list, temp_file_path):
         if if_local_from: img_path = os.path.abspath(os.curdir).replace("\\list_editing", "") + "\\icons\\"  # on local pc    # "list editing" and "icons" should be variable
         else: img_path = "https://raw.githubusercontent.com/{0}/main/icons/".format(github_repo_link)
         package_img = "<img src=\"{0}{1}.{2}\" width=\"16\" height=\"16\">".format(img_path, splitted_list[0].replace(" ","_"), p_img_extension.replace("local.", ""))
+        if if_Mariosemes: package_img = "<img src=\"{0}{1}\" width=\"16\" height=\"16\">".format(img_path, p_img_extension.replace("local.", "")) #editted for mariosemes
 
     return package_img
 
@@ -109,12 +111,15 @@ def main_list_creator(list_path, temp_file_path):
             package_link_html_opened = "<a href=\"https://community.chocolatey.org/packages/{0}\" target=\"_blank\">".format(
                 splitted_list[1])
             choco_link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/choco_icon.png\" width=\"16\" height=\"16\">".format(github_repo_link)
+            if if_Mariosemes: choco_link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link) #editted for mariosemes
 
             winget_package_htmlopened = "<a href=\"https://wingetgui.com/apps?id={0}\" target=\"_blank\">".format(splitted_list[2])
             winget_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/WinGet_support.png\" width=\"16\" height=\"16\">".format(github_repo_link)
 
             extra_link_html_opened = "<a href=\"{0}\" target=\"_blank\">".format(splitted_list[4])
+            if if_Mariosemes: extra_link_html_opened = "" #editted for mariosemes
             link_icon = "<img src=\"https://raw.githubusercontent.com/{0}/main/images/url.svg\" width=\"16\" height=\"16\">".format(github_repo_link)
+            if if_Mariosemes: link_icon = "" #editted for mariosemes
 
             if splitted_list[1].replace("/","") != splitted_list[1]:
                 splitted_list[1] = splitted_list[1].split("/")[0] + " --version=" + splitted_list[1].split("/")[1]
@@ -145,11 +150,17 @@ def main_list_creator(list_path, temp_file_path):
 
 
 # Main
+if_Mariosemes = 0
 github_repo_link = "Deezbec/Chocolater-and-WinGeter"
 html_file_name = "generator.html"
 list_csv_name = "list.csv"
+if if_Mariosemes:
+    github_repo_link = "mariosemes/Chocolater"
+    html_file_name = "generator_mariosemes.html"
+    list_csv_name = "list_mariosemes_progs.csv"
 # Default_info
 if_local_from = 0
+if_get_choco_icons = 1
 generator_path = os.path.abspath(os.curdir) + "\\" + html_file_name
 list_path = os.path.abspath(os.curdir) + "\\" + list_csv_name
 temp_file_path = os.path.abspath(os.curdir) + "\\" + "temp_file.txt"
@@ -160,9 +171,12 @@ generator_path = generator_path.replace(html_file_name, html_file_name[:-5] + "_
 input_text = input("Edit settings? (default: no): ")
 if not (input_text == "") and not (input_text == "no"):
     if input("Get local images from? (github: \"\" - default; local: \"l\"): ") == "l":
-       if_local_from = 0
+       if_local_from = 1
     if input("Change github repo? current: \"{0}\"; default \"no\" ): ".format(github_repo_link)) != "":
        github_repo_link = input("Type your github repo link: ")
+    if input("Get icons from chocolatey package's site? default \"yes\" ): ".format(github_repo_link)) != "":
+        if_get_choco_icons = 0
+       
 
 
 
