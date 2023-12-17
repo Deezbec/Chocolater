@@ -150,7 +150,7 @@ def main_list_creator(list_path, temp_file_path):
 
 
 # Main
-if_Mariosemes = 1
+if_Mariosemes = 0
 github_repo_link = "Deezbec/Chocolater-and-WinGeter"
 html_file_name = "generator.html"
 list_csv_name = "list.csv"
