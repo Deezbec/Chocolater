@@ -83,6 +83,7 @@ If you have any problems, feel free to msg me on discord Deezbec#2094 or create 
 ### Known issues:  
 1) if there is no "#\\\\\\" in the end of .csv file, it does not work properly 
 2) Some icons got from chocolatey website are not stable
+3) I guess I gotta download icons, cause I hardly ever update my list
 
 
 
